@@ -37,13 +37,13 @@ Food:
         Drought Duration: 0
 Ore:
     -Teir 1 ores-
-    Coal: 1.89K, Iron: 130, Copper: 641, Tin: 1.98K, Salt: 0, Sulphur: 0
+    Coal: 1.89K, Iron: 770, Copper: 641, Tin: 2.17K, Salt: 0, Sulphur: 0
     -Teir 2 ores-
     Titanium: 0, Cobalt: 0, Tungsten: 0, Oil: 0, Magnesium: 0
     -Teir 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
     Has: Tin, Coal, Iron, Copper
-    Mining Level: 7
+    Mining Level: 6
     Ore Boosts:
         Research: (+10%)
         Focus: (+175%)
@@ -112,18 +112,18 @@ Food:
         Focus: (+-10%)
         Furnace Level: (+0%)
     Drought:
-        Drought Power: 0
-        Drought Nerf: 6%
-        Drought Duration: 3
+        Drought Power: 7
+        Drought Nerf: 0%
+        Drought Duration: 0
 Ore:
     -Teir 1 ores-
-    Coal: 332, Iron: 29, Copper: 332, Tin: 134, Salt: 0, Sulphur: 0
+    Coal: 332, Iron: 109, Copper: 332, Tin: 158, Salt: 0, Sulphur: 0
     -Teir 2 ores-
     Titanium: 0, Cobalt: 0, Tungsten: 0, Oil: 0, Magnesium: 0
     -Teir 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
     Has: Copper, Coal, Iron, Tin
-    Mining Level: 4
+    Mining Level: 3
     Ore Boosts:
         Research: (+10%)
         Focus: (+-25%)
@@ -277,13 +277,13 @@ Food:
         Drought Duration: 0
 Ore:
     -Teir 1 ores-
-    Coal: 1.37K, Iron: 562, Copper: 0, Tin: 291, Salt: 0, Sulphur: 0
+    Coal: 1.37K, Iron: 1.2K, Copper: 0, Tin: 483, Salt: 0, Sulphur: 0
     -Teir 2 ores-
     Titanium: 0, Cobalt: 0, Tungsten: 0, Oil: 0, Magnesium: 0
     -Teir 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
     Has: Iron, Coal, Tin
-    Mining Level: 7
+    Mining Level: 6
     Ore Boosts:
         Research: (+0%)
         Focus: (+0%)
@@ -597,13 +597,13 @@ Food:
         Drought Duration: 0
 Ore:
     -Teir 1 ores-
-    Coal: 0, Iron: 12, Copper: 0, Tin: 33, Salt: 0, Sulphur: 0
+    Coal: 0, Iron: 42, Copper: 0, Tin: 42, Salt: 0, Sulphur: 0
     -Teir 2 ores-
     Titanium: 0, Cobalt: 0, Tungsten: 0, Oil: 0, Magnesium: 0
     -Teir 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
     Has: Tin, Iron
-    Mining Level: 2
+    Mining Level: 0
     Ore Boosts:
         Research: (+0%)
         Focus: (+-50%)
