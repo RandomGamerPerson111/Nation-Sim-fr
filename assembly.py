@@ -183,4 +183,4 @@ Military:
 
 
 with open("output.txt", "w", encoding="utf-8") as file:
-    file.write(generate_nation_from_focus("nich", "Basic"))
+    file.write(generate_nation_from_focus("Yugoslavia", "Government^2"))
