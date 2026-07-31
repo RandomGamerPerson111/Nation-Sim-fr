@@ -283,7 +283,7 @@ Ore:
     -Teir 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
     Has: Iron, Coal, Tin
-    Mining Level: 7
+    Mining Level: 6
     Ore Boosts:
         Research: (+0%)
         Focus: (+0%)
