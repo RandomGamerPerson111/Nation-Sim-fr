@@ -220,7 +220,7 @@ for nation in range(len(info2)):
         elif "steel:" in line_lower:
             steelCrafting = ISN(line_clean.split(": ")[1].split(" (")[0])
         elif "gear:" in line_lower:
-            gearCraftung = ISN(line_clean.split(": ")[1].split(" (")[0])
+            gearCrafting = ISN(line_clean.split(": ")[1].split(" (")[0])
         elif "steam engine:" in line_lower:
             steamEngine = ISN(line_clean.split(": ")[1].split(" (")[0])
         elif "bora:" in line_lower:
@@ -329,7 +329,11 @@ for nation in range(len(info2)):
         droughtPower += 1
 
     # economy stuff
+    if gold <= 0:
+            citHap -= 3
     gold += govtNerf * gpc * (tax / 100) * foodEconomy * round(1.1**furnaceLevel + 0.1*furnaceLevel,2)
+    if gold <= 0:
+        citHap -= 4
     goldOre += goldOreGain
     gold -= gpc * 0.1 * (uneducatedFarmer + educatedFarmer + militaryFarmer)
     gold -= gpc * 0.2 * (uneducatedMiner + educatedMiner + militaryMiner)
@@ -584,13 +588,13 @@ Industry:
     Furnace Level: {furnaceLevel}
     Furnace req: ({furnaceReq})
     -Material Crafting-
-    Bronze: {bronzeCrafting} (needs 1 copper and 1 tin for 1)
-    Gunpowder: {gunpowderCrafting} (needs 1 sulphur and 1 coal for 1)     {
-        f"{chr(10)}    Steel: {steelCrafting} (needs 10 iron and 1 coal for 1)" * (furnaceLevel >= 1) + 
-        f"{chr(10)}    Indus:{chr(10)}        Gear: {gearCrafting} (1 bronze for 10)" * (furnaceLevel >= 2) +
-        f"{chr(10)}        Steam Engine: {steamEngine} (1 Steel for 1)" * (furnaceLevel >= 3) +
-        f"{chr(10)}        BORA: {bora} (Needs 10K Steam Engines, 10K Gears, and 100K Coal for 1)" * (research[20] >= 1) +
-        f"{chr(10)}        Tractors: {tractors} (Needs 10K Steam Engines, 10K Gears, and 100K Coal for 1)" * (research[21] >= 1)
+    Bronze: 0 (needs 1 copper and 1 tin for 1)
+    Gunpowder: 0 (needs 1 sulphur and 1 coal for 1)     {
+        f"{chr(10)}    Steel: 0 (needs 10 iron and 1 coal for 1)" * (furnaceLevel >= 1) + 
+        f"{chr(10)}    Indus:{chr(10)}        Gear: 0 (1 bronze for 10)" * (furnaceLevel >= 2) +
+        f"{chr(10)}        Steam Engine: 0 (1 Steel for 1)" * (furnaceLevel >= 3) +
+        f"{chr(10)}        BORA: 0 (Needs 10K Steam Engines, 10K Gears, and 100K Coal for 1)" * (research[20] >= 1) +
+        f"{chr(10)}        Tractors: 0 (Needs 10K Steam Engines, 10K Gears, and 100K Coal for 1)" * (research[21] >= 1)
     }
 Research: {str(research).replace(' ', '')}
 Military:
