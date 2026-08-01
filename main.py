@@ -11,6 +11,8 @@ from oreFunctions import (
     stochasticRound,
     cWF,
 )
+from constructor import generateAINation
+
 
 all_nations_output = []
 
@@ -18,13 +20,22 @@ file = open("Nations.txt", "r", encoding="utf-8")
 info = file.read()
 info2 = info.split("\n\n\n")
 globalFurnaceLevel = 0
+AInationCount = 0
+nameList = []
 for nationBlock in info2:
     if not nationBlock.strip():
         continue
 
     section = "null"
 
+
     info3 = nationBlock.split("\n")
+    name = info3[0].split(":")[0]
+    if name.__contains__("(AI)"):
+        AInationCount += 1
+        nameList.append(name)
+    else:
+        nameList.append(name + " (AI)")
     for line in info3:
         line_clean = line.strip()
         line_lower = line_clean.lower()
@@ -67,6 +78,8 @@ for nation in range(len(info2)):
     bora = 0
     tractors = 0
     militaryCopy = ""
+    isAI = name.__contains__("(AI)")
+        
 
     civilWar = False
 
@@ -209,7 +222,10 @@ for nation in range(len(info2)):
             radium = ISN(line_clean.split("Radium: ")[1].split(",")[0])
             mythril = ISN(line_clean.split("Mythril: ")[1].strip())
         elif "has:" in line_lower:
-            has = line_clean.split("Has: ")[1].split(", ")
+            if line_clean == "Has:":
+                has = []
+            else:
+                has = line_clean.split("Has: ")[1].split(", ")
         elif "mining level:" in line_lower and "boosts" not in line_lower:
             if "(x" not in line_lower:
                 miningLevel = ISN(line_clean.split(": ")[1])
@@ -408,10 +424,10 @@ for nation in range(len(info2)):
                 foodDebt -= military_to_starve
                 citHap -= 5
         else:
-            food = (food - neededFood + foodGain)*foodRetention/100
+            food = (food - neededFood)*foodRetention/100  + foodGain
     else:
         foodEconomy = neededFood
-        food = (food - neededFood + foodGain)*foodRetention/100
+        food = (food - neededFood)*foodRetention/100  + foodGain
     foodExcess = foodGain - neededFood
 
     # drought stuff
@@ -430,6 +446,8 @@ for nation in range(len(info2)):
         droughtPower += 1
 
     # economy stuff
+    if gold <= 0:
+        citHap -= 3
     gold += (
         govtNerf
         * gpc
@@ -437,6 +455,8 @@ for nation in range(len(info2)):
         * foodEconomy
         * round(1.1**furnaceLevel + 0.1 * furnaceLevel, 2)
     )
+    if gold <= 0:
+        citHap -= 4
     goldOre += goldOreGain
     gold -= gpc * 0.1 * (uneducatedFarmer + educatedFarmer + militaryFarmer)
     gold -= gpc * 0.2 * (uneducatedMiner + educatedMiner + militaryMiner)
@@ -474,6 +494,7 @@ for nation in range(len(info2)):
     militaryFarmer = temp[0]
     militaryMiner = temp[1]
     militarySoldiers = temp[2]
+
 
     # Mining stuff
     MiningLevelOreBoost = 1.15**miningLevel
@@ -527,11 +548,13 @@ for nation in range(len(info2)):
     mythril = doOreGain(
         mythril, 1000000, 3, miningLevel, oreGain, has.__contains__("Mythril")
     )
-    domininglevel = input("max mining level for " + name + "?:")
+    domininglevel = 0
+    if not isAI:
+        domininglevel = input("max mining level for " + name + "?:")
     if domininglevel == "end":
         sys.exit("You said end")
     oldml = miningLevel
-    if domininglevel == "1":
+    if domininglevel == "1" or isAI:
         if has.__contains__("Titanium"):
             MLstats = calculate(1, titanium, tin, int(miningLevel))
             titanium = MLstats[0]
@@ -550,7 +573,10 @@ for nation in range(len(info2)):
     coal = temp[3]
     salt = temp[4]
     steel = temp[5]
+    MiningLevelOreBoost = 1.15**miningLevel
+    furnaceLeveOrelBoost = 2.5**furnaceLevel
 
+    
     goldBuff = ((govtNerf * round(1.1**furnaceLevel + 0.1 * furnaceLevel, 2)) - 1) / 100
 
     cWLF = 0
@@ -561,34 +587,76 @@ for nation in range(len(info2)):
         cWKF = 1 - cWLF
         citHap = round(66 + citHap * 34)
 
+    #precompute civil war stats so as to make the following code not instantly kill anyone who reads it
+    finalGold = round(gold*cWKF,2)
+    finalUneducatedFarmer = cWF(uneducatedFarmer,cWKF)
+    finalUneducatedMiner = cWF(uneducatedMiner,cWKF)
+    finalUneducatedGovt = cWF(uneducatedGovt,cWKF)
+    finalEducatedFarmer = cWF(educatedFarmer,cWKF)
+    finalEducatedMiner = cWF(educatedMiner,cWKF)
+    finalEducatedGovt = cWF(educatedGovt,cWKF)
+    finalEducatedScientist = cWF(educatedScientist,cWKF)
+    finalMilitaryFarmer = cWF(militaryFarmer,cWKF)
+    finalMilitaryMiner = cWF(militaryMiner,cWKF)
+    finalMilitarySoldiers = cWF(militarySoldiers,cWKF)
+    finalChildCount = cWF(childCount,cWKF)
+    finalUneducatedCount = cWF(finalUneducatedFarmer + finalUneducatedMiner + finalUneducatedGovt,cWKF)
+    finalEducatedCount = cWF(finalEducatedFarmer + finalEducatedMiner + finalEducatedGovt + finalEducatedScientist,cWKF)
+    finalMilitaryCount = cWF(finalMilitaryFarmer + finalMilitaryMiner + finalMilitarySoldiers,cWKF)
+    finalPopulation = cWF(finalChildCount + finalUneducatedCount + finalEducatedCount + finalMilitaryCount,cWKF)
+    finalFood = cWF(food,cWKF)
+    finalNeededInfluence = furnaceLevel*(finalUneducatedCount+10*finalEducatedCount+3*finalMilitaryCount)
+    recomendedUneducatedFarmers = min(math.ceil(((2*finalChildCount)+finalPopulation)/(foodperperson*0.95)),uneducatedCount)
+    recomendedEducatedFarmers = min(math.ceil((((2*finalChildCount)+finalPopulation)/(foodperperson*0.95))-recomendedUneducatedFarmers),educatedCount)
+    recomendedMilitaryFarmers = min(math.ceil((((2*finalChildCount)+finalPopulation)/(foodperperson*0.95))-recomendedUneducatedFarmers-recomendedEducatedFarmers),militaryCount)
+    recomendedEducatedGovt = min(math.ceil((finalNeededInfluence)/influencePerEducatedEmployee),educatedCount-recomendedEducatedFarmers)
+    recomendedUneducatedGovt = min(math.ceil((finalNeededInfluence-(finalEducatedGovt*influencePerEducatedEmployee))/influencePerUneducatedEmployee),uneducatedCount-recomendedUneducatedFarmers)
+    recomendedUneducatedMiner = math.ceil(uneducatedCount-recomendedUneducatedFarmers-recomendedUneducatedGovt)
+    recomendedScientists = math.ceil(educatedCount-recomendedEducatedFarmers-recomendedEducatedGovt)
+    if isAI:
+        finalUneducatedFarmer = recomendedUneducatedFarmers
+        finalUneducatedMiner = recomendedUneducatedMiner
+        finalUneducatedGovt = recomendedUneducatedGovt
+        finalEducatedFarmer = recomendedEducatedFarmers
+        finalEducatedMiner = 0
+        finalEducatedGovt = recomendedEducatedGovt
+        finalEducatedScientist = recomendedScientists
+        finalMilitaryFarmer = recomendedMilitaryFarmers
+        if finalMilitaryCount-finalMilitaryFarmer > 0:
+            if finalMilitaryMiner > 0:
+                finalMilitaryMiner = finalMilitaryCount-finalMilitaryFarmer
+            else:
+                finalMilitarySoldiers = finalMilitaryCount-finalMilitaryFarmer
+
+
     final_output = f"""{name}:
 Country focus: {focus}
-Gold: {SN(round(gold*cWKF,2))}, Gold ore: {goldOre} (+{goldOreGain}), Buff/Nerf: +{goldBuff}%
+Gold: {SN(finalGold)}, Gold ore: {goldOre} (+{goldOreGain}), Buff/Nerf: +{goldBuff}%
 Gold per capita: {SN(gpc)}, Tax: {tax}%
 Population Stats:
-    Population: {SNS(cWF(childCount,cWKF)+cWF(uneducatedFarmer,cWKF)+cWF(uneducatedMiner,cWKF)+cWF(uneducatedGovt,cWKF)+cWF(educatedFarmer,cWKF)+cWF(educatedMiner,cWKF)+cWF(educatedGovt,cWKF)+cWF(educatedScientist,cWKF)+cWF(militaryFarmer,cWKF)+cWF(militaryMiner,cWKF)+cWF(militarySoldiers,cWKF))} (+{cWF(popGain,cWKF)}) (+{cWF(popGain2,cWKF)}/t2) (+{popBoost}%) (t2 cost: 50)
+    Population: {SNS(finalPopulation)} (+{cWF(popGain,cWKF)}) (+{cWF(popGain2,cWKF)}/t2) (+{popBoost}%) (t2 cost: 50)
     Citizen happiness: {citHap} (+{citHapGain}) (+{citHapGain2})
     Citizen anger: {citAng} (+{citAngGain}) (/{citAngDiv})
 Education Type:
-    {cWF(childCount,cWKF)} Child
-    {cWF(uneducatedFarmer,cWKF)+cWF(uneducatedMiner,cWKF)+cWF(uneducatedGovt,cWKF)} Uneducated
-    {cWF(educatedFarmer,cWKF)+cWF(educatedMiner,cWKF)+cWF(educatedGovt,cWKF)+cWF(educatedScientist,cWKF)} Educated
-    {cWF(militaryFarmer,cWKF)+cWF(militaryMiner,cWKF)+cWF(militarySoldiers,cWKF)} Military
+    {finalChildCount} Child
+    {finalUneducatedCount} Uneducated
+    {finalEducatedCount} Educated
+    {finalMilitaryCount} Military
 Uneducated Occupation:
-    {cWF(uneducatedFarmer,cWKF)} Farmer, Recommended: {math.ceil((2*cWF(childCount,cWKF)+cWF(uneducatedFarmer,cWKF)+cWF(uneducatedMiner,cWKF)+cWF(uneducatedGovt,cWKF)+cWF(educatedFarmer,cWKF)+cWF(educatedMiner,cWKF)+cWF(educatedGovt,cWKF)+cWF(educatedScientist,cWKF)+cWF(militaryFarmer,cWKF)+cWF(militaryMiner,cWKF)+cWF(militarySoldiers,cWKF))/(foodperperson*0.95))}
-    {cWF(uneducatedMiner,cWKF)} Miner
-    {cWF(uneducatedGovt,cWKF)} Govt
+    {finalUneducatedFarmer} Farmer, Recommended: {recomendedUneducatedFarmers}
+    {finalUneducatedMiner} Miner, Recommended: {recomendedUneducatedMiner}
+    {finalUneducatedGovt} Govt, Recommended: {recomendedUneducatedGovt}
 Educated occupation:
-    {cWF(educatedFarmer,cWKF)} Farmer
-    {cWF(educatedMiner,cWKF)} Miner
-    {cWF(educatedGovt,cWKF)} Govt
-    {cWF(educatedScientist,cWKF)} Scientist
+    {finalEducatedFarmer} Farmer, Recommended: {recomendedEducatedFarmers}
+    {finalEducatedMiner} Miner, Recommended: 0
+    {finalEducatedGovt} Govt, Recommended: {recomendedEducatedGovt}
+    {finalEducatedScientist} Scientist, Recommended: {recomendedScientists}
 Military Occupation:
-    {cWF(militaryFarmer,cWKF)} Farmer
-    {cWF(militaryMiner,cWKF)} Miner
-    {cWF(militarySoldiers,cWKF)} Solders
+    {finalMilitaryFarmer} Farmer, Recommended: {recomendedMilitaryFarmers}
+    {finalMilitaryMiner} Miner, Recommended: N/A
+    {finalMilitarySoldiers} Solders, Recommended: N/A
 Food:
-    {cWF(food,cWKF)} (+{foodExcess} Excess per year)
+    {finalFood} (+{foodExcess} Excess per year)
     {foodRetention}% retention
     Farming Boosts:
         Research: (+{researchFarmingBoost}%)
@@ -599,11 +667,11 @@ Food:
         Drought Nerf: {droughtNerf}%
         Drought Duration: {droughtDuration}
 Ore:
-    -Teir 1 ores-
+    -Tier 1 ores-
     Coal: {SN(cWF(coal,cWKF))}, Iron: {SN(cWF(iron,cWKF))}, Copper: {SN(cWF(copper,cWKF))}, Tin: {SN(cWF(tin,cWKF))}, Salt: {SN(cWF(salt,cWKF))}, Sulphur: {SN(cWF(sulphur,cWKF))}
-    -Teir 2 ores-
+    -Tier 2 ores-
     Titanium: {SN(cWF(titanium,cWKF))}, Cobalt: {SN(cWF(cobalt,cWKF))}, Tungsten: {SN(cWF(tungsten,cWKF))}, Oil: {SN(cWF(oil,cWKF))}, Magnesium: {SN(cWF(magnesium,cWKF))}
-    -Teir 3 ores-
+    -Tier 3 ores-
     Uranium: {SN(cWF(uranium,cWKF))}, Silicon: {SN(cWF(silicon,cWKF))}, Beryllium: {SN(cWF(beryllium,cWKF))}, Hydrogen: {SN(cWF(hydrogen,cWKF))}, Plutonium: {SN(cWF(plutonium,cWKF))}, Radium: {SN(cWF(radium,cWKF))}, Mythril: {SN(cWF(mythril,cWKF))}
     Has: {", ".join(has)}
     Mining Level: {miningLevel}
@@ -618,9 +686,9 @@ Research Boosts:
     Furnace level: (x{furnaceResearchBoost})
     Scientists: (x{scientistResearchBoost})
 Government:
-    Needed influence: {neededInfluence} ({furnaceLevel}*(1*{SN(cWF(uneducatedFarmer,cWKF)+cWF(uneducatedMiner,cWKF)+cWF(uneducatedGovt,cWKF))}+10*{SN(cWF(educatedFarmer,cWKF)+cWF(educatedMiner,cWKF)+cWF(educatedGovt,cWKF)+cWF(educatedScientist,cWKF))}+3*{SN(cWF(militaryFarmer,cWKF)+cWF(militaryMiner,cWKF)+cWF(militarySoldiers,cWKF))}))
-    Current educated government employees: {cWF(educatedGovt,cWKF)}
-    Current uneducated government employees: {cWF(uneducatedGovt,cWKF)}
+    Needed influence: {finalNeededInfluence} ({furnaceLevel}*(1*{SN(cWF(uneducatedFarmer,cWKF)+cWF(uneducatedMiner,cWKF)+cWF(uneducatedGovt,cWKF))}+10*{SN(cWF(educatedFarmer,cWKF)+cWF(educatedMiner,cWKF)+cWF(educatedGovt,cWKF)+cWF(educatedScientist,cWKF))}+3*{SN(cWF(militaryFarmer,cWKF)+cWF(militaryMiner,cWKF)+cWF(militarySoldiers,cWKF))}))
+    Current educated government employees: {finalEducatedGovt}
+    Current uneducated government employees: {finalUneducatedGovt}
     Influence per educated employee: {influencePerEducatedEmployee}
     Influence per uneducated employee: {influencePerUneducatedEmployee}
     Influence boosts:
@@ -641,34 +709,34 @@ Military:
         {militaryCopy.strip()}"""
 
     if civilWar:
-        final_output += "\n\n\n" + f"""Rebelion of {name}:
+        final_output += "\n\n\n" + f"""Rebelion of {name}+{" (AI)" if not isAI else ""}:
 Country focus: {focus}
-Gold: {SN(round(gold*cWLF,2))}, Gold ore: {goldOre} (+{goldOreGain}), Buff/Nerf: +{goldBuff}%
+Gold: {SN(gold-finalGold)}, Gold ore: {goldOre} (+{goldOreGain}), Buff/Nerf: +{goldBuff}%
 Gold per capita: {SN(gpc)}, Tax: {tax}%
 Population Stats:
-    Population: {SNS(cWF(childCount,cWLF)+cWF(uneducatedFarmer,cWLF)+cWF(uneducatedMiner,cWLF)+cWF(uneducatedGovt,cWLF)+cWF(educatedFarmer,cWLF)+cWF(educatedMiner,cWLF)+cWF(educatedGovt,cWLF)+cWF(educatedScientist,cWLF)+cWF(militaryFarmer,cWLF)+cWF(militaryMiner,cWLF)+cWF(militarySoldiers,cWLF))} (+{cWF(popGain,cWLF)}) (+{cWF(popGain2,cWLF)}/t2) (+{popBoost}%) (t2 cost: 50)
+    Population: {SNS(population-finalPopulation)} (+{cWF(popGain,cWLF)}) (+{cWF(popGain2,cWLF)}/t2) (+{popBoost}%) (t2 cost: 50)
     Citizen happiness: 100 (+{citHapGain}) (+{citHapGain2})
     Citizen anger: {citAng} (+{citAngGain}) (/{citAngDiv})
 Education Type:
-    {cWF(childCount,cWLF)} Child
-    {cWF(uneducatedFarmer,cWLF)+cWF(uneducatedMiner,cWLF)+cWF(uneducatedGovt,cWLF)} Uneducated
-    {cWF(educatedFarmer,cWLF)+cWF(educatedMiner,cWLF)+cWF(educatedGovt,cWLF)+cWF(educatedScientist,cWLF)} Educated
-    {cWF(militaryFarmer,cWLF)+cWF(militaryMiner,cWLF)+cWF(militarySoldiers,cWLF)} Military
+    {childCount-finalChildCount} Child
+    {uneducatedCount-finalUneducatedCount} Uneducated
+    {educatedCount-finalEducatedCount} Educated
+    {militaryCount-finalMilitaryCount} Military
 Uneducated Occupation:
-    {cWF(uneducatedFarmer,cWLF)} Farmer, Recommended: {math.ceil((2*cWF(childCount,cWLF)+cWF(uneducatedFarmer,cWLF)+cWF(uneducatedMiner,cWLF)+cWF(uneducatedGovt,cWLF)+cWF(educatedFarmer,cWLF)+cWF(educatedMiner,cWLF)+cWF(educatedGovt,cWLF)+cWF(educatedScientist,cWLF)+cWF(militaryFarmer,cWLF)+cWF(militaryMiner,cWLF)+cWF(militarySoldiers,cWLF))/(foodperperson*0.95))}
-    {cWF(uneducatedMiner,cWLF)} Miner
-    {cWF(uneducatedGovt,cWLF)} Govt
+    {uneducatedFarmer-finalUneducatedFarmer} Farmer, Recommended: {math.ceil((2*(childCount-finalChildCount))+(population-finalPopulation))/(foodperperson*0.95)}
+    {uneducatedMiner-finalUneducatedMiner} Miner
+    {uneducatedGovt-finalUneducatedGovt} Govt
 Educated occupation:
-    {cWF(educatedFarmer,cWLF)} Farmer
-    {cWF(educatedMiner,cWLF)} Miner
-    {cWF(educatedGovt,cWLF)} Govt
-    {cWF(educatedScientist,cWLF)} Scientist
+    {educatedFarmer-finalEducatedFarmer} Farmer
+    {educatedMiner-finalEducatedMiner} Miner
+    {educatedGovt-finalEducatedGovt} Govt
+    {educatedScientist-finalEducatedScientist} Scientist
 Military Occupation:
-    {cWF(militaryFarmer,cWLF)} Farmer
-    {cWF(militaryMiner,cWLF)} Miner
-    {cWF(militarySoldiers,cWLF)} Solders
+    {militaryFarmer-finalMilitaryFarmer} Farmer
+    {militaryMiner-finalMilitaryMiner} Miner
+    {militarySoldiers-finalMilitarySoldiers} Solders
 Food:
-    {cWF(food,cWLF)} (+{foodExcess} Excess per year)
+    {food-finalFood} (+{foodExcess} Excess per year)
     {foodRetention}% retention
     Farming Boosts:
         Research: (+{researchFarmingBoost}%)
@@ -679,11 +747,11 @@ Food:
         Drought Nerf: {droughtNerf}%
         Drought Duration: {droughtDuration}
 Ore:
-    -Teir 1 ores-
+    -Tier 1 ores-
     Coal: {SN(cWF(coal,cWLF))}, Iron: {SN(cWF(iron,cWLF))}, Copper: {SN(cWF(copper,cWLF))}, Tin: {SN(cWF(tin,cWLF))}, Salt: {SN(cWF(salt,cWLF))}, Sulphur: {SN(cWF(sulphur,cWLF))}
-    -Teir 2 ores-
+    -Tier 2 ores-
     Titanium: {SN(cWF(titanium,cWLF))}, Cobalt: {SN(cWF(cobalt,cWLF))}, Tungsten: {SN(cWF(tungsten,cWLF))}, Oil: {SN(cWF(oil,cWLF))}, Magnesium: {SN(cWF(magnesium,cWLF))}
-    -Teir 3 ores-
+    -Tier 3 ores-
     Uranium: {SN(cWF(uranium,cWLF))}, Silicon: {SN(cWF(silicon,cWLF))}, Beryllium: {SN(cWF(beryllium,cWLF))}, Hydrogen: {SN(cWF(hydrogen,cWLF))}, Plutonium: {SN(cWF(plutonium,cWLF))}, Radium: {SN(cWF(radium,cWLF))}, Mythril: {SN(cWF(mythril,cWLF))}
     Has: {", ".join(has)}
     Mining Level: {miningLevel}
@@ -699,8 +767,8 @@ Research Boosts:
     Scientists: (x{scientistResearchBoost})
 Government:
     Needed influence: {neededInfluence} ({furnaceLevel}*(1*{SN(cWF(uneducatedFarmer,cWLF)+cWF(uneducatedMiner,cWLF)+cWF(uneducatedGovt,cWLF))}+10*{SN(cWF(educatedFarmer,cWLF)+cWF(educatedMiner,cWLF)+cWF(educatedGovt,cWLF)+cWF(educatedScientist,cWLF))}+3*{SN(cWF(militaryFarmer,cWLF)+cWF(militaryMiner,cWLF)+cWF(militarySoldiers,cWLF))}))
-    Current educated government employees: {cWF(educatedGovt,cWLF)}
-    Current uneducated government employees: {cWF(uneducatedGovt,cWLF)}
+    Current educated government employees: {finalEducatedGovt}
+    Current uneducated government employees: {finalUneducatedGovt}
     Influence per educated employee: {influencePerEducatedEmployee}
     Influence per uneducated employee: {influencePerUneducatedEmployee}
     Influence boosts:
@@ -720,6 +788,10 @@ Military:
     Weapons:
         {militaryCopy.strip()}"""
     all_nations_output.append(final_output)
+
+if random.random() < 1/(1+math.sqrt(AInationCount/4)):
+    all_nations_output.append(generateAINation(nameList))
+
 
 
 combined_text = "\n\n\n".join(all_nations_output)
