@@ -285,7 +285,7 @@ for nation in range(len(info2)):
         elif "steel:" in line_lower:
             steelCrafting = ISN(line_clean.split(": ")[1].split(" (")[0])
         elif "gear:" in line_lower:
-            gearCraftung = ISN(line_clean.split(": ")[1].split(" (")[0])
+            gearCrafting = ISN(line_clean.split(": ")[1].split(" (")[0])
         elif "steam engine:" in line_lower:
             steamEngine = ISN(line_clean.split(": ")[1].split(" (")[0])
         elif "bora:" in line_lower:
@@ -447,14 +447,8 @@ for nation in range(len(info2)):
 
     # economy stuff
     if gold <= 0:
-        citHap -= 3
-    gold += (
-        govtNerf
-        * gpc
-        * (tax / 100)
-        * foodEconomy
-        * round(1.1**furnaceLevel + 0.1 * furnaceLevel, 2)
-    )
+            citHap -= 3
+    gold += govtNerf * gpc * (tax / 100) * foodEconomy * round(1.1**furnaceLevel + 0.1*furnaceLevel,2)
     if gold <= 0:
         citHap -= 4
     goldOre += goldOreGain
