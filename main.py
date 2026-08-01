@@ -408,10 +408,10 @@ for nation in range(len(info2)):
                 foodDebt -= military_to_starve
                 citHap -= 5
         else:
-            food = (food - neededFood + foodGain)*foodRetention/100
+            food = (food - neededFood + foodGain) * foodRetention / 100
     else:
         foodEconomy = neededFood
-        food = (food - neededFood + foodGain)*foodRetention/100
+        food = (food - neededFood + foodGain) * foodRetention / 100
     foodExcess = foodGain - neededFood
 
     # drought stuff
