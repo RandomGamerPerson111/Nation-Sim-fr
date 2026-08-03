@@ -551,7 +551,7 @@ for nation in range(len(info2)):
     salt = temp[4]
     steel = temp[5]
 
-    goldBuff = ((govtNerf * round(1.1**furnaceLevel + 0.1 * furnaceLevel, 2)) - 1) / 100
+    goldBuff = ((govtNerf * round(1.1**furnaceLevel + 0.1 * furnaceLevel, 2)) - 1) * 100
 
     cWLF = 0
     cWKF = 1
