@@ -77,12 +77,34 @@ FOCUS_DATASET = {
         "gold": 20, "happiness": 85, "population": 4000, "anger": 0,
         "pop_gain": 100, "pop_gain2": 25, "t2_cost": 85, "gpc": 0.01,
         "hap_gain": 0, "ore_boost": 0.65, "farming_boost": 0.85, "influence_boost": 15.0, "research_boost": 1.0
-    }
+    },
+    "Everything": {
+        "gold": 10, "happiness": 150, "population": 15000, "anger": 0,
+        "pop_gain": 750, "pop_gain2": 150, "t2_cost": 10, "gpc": 0.1,
+        "hap_gain": 2, "ore_boost": 1.5, "farming_boost": 1.5, "influence_boost": 2.5, "research_boost": 1.0
+    },
+    "Everything^2": {
+        "gold": 25, "happiness": 250, "population": 25000, "anger": 0,
+        "pop_gain": 1550, "pop_gain2": 350, "t2_cost": 1, "gpc": 1,
+        "hap_gain": 5, "ore_boost": 5, "farming_boost": 5, "influence_boost": 25, "research_boost": 1.0
+    },
+    "Singular": {
+        "gold": 10, "happiness": 300, "population": 1000, "anger": 0,
+        "pop_gain": 25, "pop_gain2": 5, "t2_cost": 500, "gpc": 0.5,
+        "hap_gain": 5, "ore_boost": 4, "farming_boost": 4, "influence_boost": 20, "research_boost": 1.0
+    },
+    "Singular^2": {
+        "gold": 1, "happiness": 750, "population": 100, "anger": 0,
+        "pop_gain": 2, "pop_gain2": 1, "t2_cost": 500, "gpc": 2,
+        "hap_gain": 7, "ore_boost": 15, "farming_boost": 15, "influence_boost": 100, "research_boost": 1.0
+    },
 }
 
 def generate_nation_from_focus(name, focus):
     if focus not in FOCUS_DATASET:
         raise ValueError(f"Focus '{focus}' is invalid.")
+    if focus in ["Everything","Everything^2","Singular","Singular^2"] and not name.__contains__("(AI)"):
+        raise ValueError(f"Used AI focus while being a player")
 
     data = FOCUS_DATASET[focus]
     
@@ -104,7 +126,7 @@ def generate_nation_from_focus(name, focus):
     return f"""{name}:
 Country focus: {focus}
 Gold: {SN(data["gold"])}, Gold ore: 1 (+0), Buff/Nerf: +0%
-Gold per capita: {SN(data["gpc"])}, Tax: 10%
+Gold per capita: {SN(data["gpc"])}, Tax: 14%
 Population Stats:
     Population: {SNS(population)} (+{data["pop_gain"]}) (+{data["pop_gain2"]}/t2) (+0%) (t2 cost: {data["t2_cost"]})
     Citizen happiness: {data["happiness"]} (+0) (+{data["hap_gain"]})
