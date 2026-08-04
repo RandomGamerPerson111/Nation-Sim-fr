@@ -1,53 +1,53 @@
 Cicia:
 Country focus: Industry^2
-Gold: 18, Gold ore: 0 (+0), Buff/Nerf: +0.0%
+Gold: 28.08, Gold ore: 0 (+0), Buff/Nerf: +0.0%
 Gold per capita: 0.01, Tax: 14%
 Population Stats:
-    Population: 5.535K (+165) (+10/t2) (+0%) (t2 cost: 50)
+    Population: 5.875K (+185) (+10/t2) (+0%) (t2 cost: 50)
     Citizen happiness: 65 (+0) (+0)
     Citizen anger: 25 (+0) (/2)
 Education Type:
-    617 Child
-    4918 Uneducated
+    701 Child
+    5174 Uneducated
     0 Educated
     0 Military
 Uneducated Occupation:
-    0 Farmer, Recommended: 3680
-    4918 Miner
-    0 Govt
+    0 Farmer, Recommended: 3763
+    5074 Miner, Recommended: 1411
+    100 Govt, Recommended: 0
 Educated occupation:
-    0 Farmer
-    0 Miner
-    0 Govt
-    0 Scientist
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: 0
+    0 Govt, Recommended: 0
+    0 Scientist, Recommended: 0
 Military Occupation:
-    0 Farmer
-    0 Miner
-    0 Solders
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: N/A
+    0 Solders, Recommended: N/A
 Food:
-    6530 (+-5958.0 Excess per year)
+    21517 (+-6358.0 Excess per year)
     40% retention
     Farming Boosts:
-        Research: (+10%)
+        Research: (+15%)
         Focus: (+-20%)
         Furnace Level: (+0%)
     Drought:
-        Drought Power: 9
+        Drought Power: 11
         Drought Nerf: 0%
         Drought Duration: 0
 Ore:
-    -Teir 1 ores-
-    Coal: 8.9K, Iron: 3.3K, Copper: 7.65K, Tin: 7.84K, Salt: 0, Sulphur: 0
-    -Teir 2 ores-
+    -Tier 1 ores-
+    Coal: 17.5K, Iron: 2.4K, Copper: 15.7K, Tin: 13.9K, Salt: 8.56K, Sulphur: 0
+    -Tier 2 ores-
     Titanium: 0, Cobalt: 0, Tungsten: 0, Oil: 0, Magnesium: 0
-    -Teir 3 ores-
+    -Tier 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
     Has: Tin, Coal, Iron, Copper, Salt
     Mining Level: 9
     Ore Boosts:
         Research: (+10%)
         Focus: (+175%)
-        Mining Level: (x3.0590228625390607)
+        Mining Level: (x3.5178762919199196)
         Furnace Level: (x1.0)
 Research Boosts:
     Research: (+0%)
@@ -55,7 +55,7 @@ Research Boosts:
     Furnace level: (x1)
     Scientists: (x1.0)
 Government:
-    Needed influence: 0 (0*(1*4.92K+10*0+3*0))
+    Needed influence: 5.17K (1*(1*5.17K+10*0+3*0))
     Current educated government employees: 0
     Current uneducated government employees: 0
     Influence per educated employee: 1125.0
@@ -65,12 +65,12 @@ Government:
         Focus: (+-25%)
     Government influence is multiplying food, ore, money from tax, and research by x1
 Industry:
-    Furnace Level: 0
+    Furnace Level: 1
     Furnace req: ((Iron: 10K, Bronze: 1K, Coal: 500, Salt: 500, ))
     -Material Crafting-
-    Bronze: 0 (needs 1 copper and 1 tin for 1)
+    Bronze: 0 (needs 1 copper and 1 tin for 2)
     Gunpowder: 0 (needs 1 sulphur and 1 coal for 1)     
-Research: [1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+Research: [1,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 Military:
     War:
         -0% Farming Nerf
@@ -80,47 +80,47 @@ Military:
 
 Daria:
 Country focus: Science
-Gold: 24.7, Gold ore: 1 (+0), Buff/Nerf: +0.0%
+Gold: 1.19, Gold ore: 1 (+0), Buff/Nerf: +0.0%
 Gold per capita: 0.01, Tax: 10%
 Population Stats:
-    Population: 2.81K (+140) (+10/t2) (+0%) (t2 cost: 50)
-    Citizen happiness: 94 (+0) (+1)
+    Population: 2.6K (+160) (+10/t2) (+0%) (t2 cost: 50)
+    Citizen happiness: 96 (+0) (+1)
     Citizen anger: 50 (+0) (/2)
 Education Type:
-    475 Child
-    2335 Uneducated
+    0 Child
+    2534 Uneducated
     0 Educated
     0 Military
 Uneducated Occupation:
-    1615 Farmer, Recommended: 1671
-    720 Miner
-    0 Govt
+    1753 Farmer, Recommended: 1865
+    781 Miner, Recommended: 669
+    0 Govt, Recommended: 0
 Educated occupation:
-    0 Farmer
-    0 Miner
-    0 Govt
-    0 Scientist
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: 0
+    0 Govt, Recommended: 0
+    0 Scientist, Recommended: 0
 Military Occupation:
-    0 Farmer
-    0 Miner
-    0 Solders
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: N/A
+    0 Solders, Recommended: N/A
 Food:
-    133 (+107.0 Excess per year)
+    2925 (+10.0 Excess per year)
     40% retention
     Farming Boosts:
         Research: (+15%)
         Focus: (+-10%)
         Furnace Level: (+0%)
     Drought:
-        Drought Power: 9
+        Drought Power: 11
         Drought Nerf: 0%
         Drought Duration: 0
 Ore:
-    -Teir 1 ores-
-    Coal: 526, Iron: 194, Copper: 526, Tin: 280, Salt: 0, Sulphur: 0
-    -Teir 2 ores-
+    -Tier 1 ores-
+    Coal: 736, Iron: 404, Copper: 736, Tin: 2.49K, Salt: 210, Sulphur: 0
+    -Tier 2 ores-
     Titanium: 0, Cobalt: 0, Tungsten: 0, Oil: 0, Magnesium: 0
-    -Teir 3 ores-
+    -Tier 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
     Has: Copper, Coal, Iron, Tin, Salt
     Mining Level: 5
@@ -135,7 +135,7 @@ Research Boosts:
     Furnace level: (x1)
     Scientists: (x4.0)
 Government:
-    Needed influence: 0 (0*(1*2.34K+10*0+3*0))
+    Needed influence: 0 (0*(1*2.53K+10*0+3*0))
     Current educated government employees: 0
     Current uneducated government employees: 0
     Influence per educated employee: 1200.0
@@ -150,7 +150,7 @@ Industry:
     -Material Crafting-
     Bronze: 0 (needs 1 copper and 1 tin for 1)
     Gunpowder: 0 (needs 1 sulphur and 1 coal for 1)     
-Research: [1,1,1,1,1,1,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+Research: [1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 Military:
     War:
         -0% Farming Nerf
@@ -160,49 +160,49 @@ Military:
 
 Bozistan:
 Country focus: Farming^2
-Gold: 1.39, Gold ore: 0 (+0), Buff/Nerf: +0.0%
+Gold: 4.62, Gold ore: 0 (+0), Buff/Nerf: +0.0%
 Gold per capita: 0.01, Tax: 14%
 Population Stats:
-    Population: 5.535K (+165) (+10/t2) (+0%) (t2 cost: 50)
+    Population: 8.02K (+270) (+20/t2) (+0%) (t2 cost: 50)
     Citizen happiness: 65 (+0) (+0)
     Citizen anger: 25 (+0) (/2)
 Education Type:
-    617 Child
-    4918 Uneducated
+    1702 Child
+    5814 Uneducated
     0 Educated
-    0 Military
+    500 Military
 Uneducated Occupation:
-    1117 Farmer, Recommended: 1211
-    3801 Miner
-    0 Govt
+    1572 Farmer, Recommended: 1572
+    4242 Miner, Recommended: 4242
+    0 Govt, Recommended: 0
 Educated occupation:
-    0 Farmer
-    0 Miner
-    0 Govt
-    0 Scientist
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: 0
+    0 Govt, Recommended: 0
+    0 Scientist, Recommended: 0
 Military Occupation:
-    0 Farmer
-    0 Miner
-    0 Solders
+    500 Farmer, Recommended: 0
+    0 Miner, Recommended: N/A
+    0 Solders, Recommended: N/A
 Food:
-    295 (+-124.0 Excess per year)
+    10463 (+4026.0 Excess per year)
     40% retention
     Farming Boosts:
         Research: (+15%)
         Focus: (+150%)
         Furnace Level: (+0%)
     Drought:
-        Drought Power: 0
-        Drought Nerf: 7%
-        Drought Duration: 1
+        Drought Power: 1
+        Drought Nerf: 0%
+        Drought Duration: 0
 Ore:
-    -Teir 1 ores-
-    Coal: 2.42K, Iron: 541, Copper: 0, Tin: 1.65K, Salt: 0, Sulphur: 0
-    -Teir 2 ores-
+    -Tier 1 ores-
+    Coal: 3.54K, Iron: 663, Copper: 619, Tin: 2.27K, Salt: 1.12K, Sulphur: 0
+    -Tier 2 ores-
     Titanium: 0, Cobalt: 0, Tungsten: 0, Oil: 0, Magnesium: 0
-    -Teir 3 ores-
+    -Tier 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
-    Has: Tin, Coal, Iron, Salt
+    Has: Tin, Coal, Iron, Salt, Copper
     Mining Level: 8
     Ore Boosts:
         Research: (+10%)
@@ -215,7 +215,7 @@ Research Boosts:
     Furnace level: (x1)
     Scientists: (x1.0)
 Government:
-    Needed influence: 0 (0*(1*4.92K+10*0+3*0))
+    Needed influence: 0 (0*(1*5.81K+10*0+3*500))
     Current educated government employees: 0
     Current uneducated government employees: 0
     Influence per educated employee: 1200.0
@@ -235,37 +235,39 @@ Military:
     War:
         -0% Farming Nerf
     Weapons:
-        None
+        Basic Boats: 10 (Requires 50 people per boat per month)
+        Swords: 400 (Requires 1 Iron for 1 sword)
+        Shields: 400 (Requires 1 Bronze for shield)
 
 
 Stupididiotville:
 Country focus: Population
-Gold: 233, Gold ore: 1 (+0), Buff/Nerf: +0.0%
+Gold: 284, Gold ore: 1 (+0), Buff/Nerf: +0.0%
 Gold per capita: 0.02, Tax: 14%
 Population Stats:
-    Population: 16.81K (+890) (+60/t2) (+0%) (t2 cost: 50)
+    Population: 18.65K (+1010) (+60/t2) (+0%) (t2 cost: 50)
     Citizen happiness: 85 (+0) (+0)
     Citizen anger: 0 (+0) (/2)
 Education Type:
-    3070 Child
-    13740 Uneducated
+    3626 Child
+    15024 Uneducated
     0 Educated
     0 Military
 Uneducated Occupation:
-    11546 Farmer, Recommended: 11724
-    2194 Miner
-    0 Govt
+    14279 Farmer, Recommended: 14279
+    745 Miner, Recommended: 745
+    0 Govt, Recommended: 0
 Educated occupation:
-    0 Farmer
-    0 Miner
-    0 Govt
-    0 Scientist
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: 0
+    0 Govt, Recommended: 0
+    0 Scientist, Recommended: 0
 Military Occupation:
-    0 Farmer
-    0 Miner
-    0 Solders
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: N/A
+    0 Solders, Recommended: N/A
 Food:
-    991 (+989.0 Excess per year)
+    19716 (+2526.0 Excess per year)
     40% retention
     Farming Boosts:
         Research: (+5%)
@@ -273,21 +275,21 @@ Food:
         Furnace Level: (+0%)
     Drought:
         Drought Power: 0
-        Drought Nerf: 8%
-        Drought Duration: 2
+        Drought Nerf: 0%
+        Drought Duration: 0
 Ore:
-    -Teir 1 ores-
-    Coal: 2.37K, Iron: 276, Copper: 0, Tin: 900, Salt: 486, Sulphur: 0
-    -Teir 2 ores-
+    -Tier 1 ores-
+    Coal: 2.95K, Iron: 860, Copper: 584, Tin: 1.48K, Salt: 1.07K, Sulphur: 0
+    -Tier 2 ores-
     Titanium: 0, Cobalt: 0, Tungsten: 0, Oil: 0, Magnesium: 0
-    -Teir 3 ores-
+    -Tier 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
     Has: Iron, Coal, Tin, Salt, Copper
     Mining Level: 8
     Ore Boosts:
         Research: (+0%)
         Focus: (+0%)
-        Mining Level: (x2.6600198804687487)
+        Mining Level: (x3.0590228625390607)
         Furnace Level: (x1.0)
 Research Boosts:
     Research: (+0%)
@@ -295,7 +297,7 @@ Research Boosts:
     Furnace level: (x1)
     Scientists: (x1.0)
 Government:
-    Needed influence: 0 (0*(1*13.7K+10*0+3*0))
+    Needed influence: 0 (0*(1*15K+10*0+3*0))
     Current educated government employees: 0
     Current uneducated government employees: 0
     Influence per educated employee: 1275.0
@@ -320,54 +322,54 @@ Military:
 
 Borganor:
 Country focus: Industry^2
-Gold: 19.5, Gold ore: 1 (+0), Buff/Nerf: +0.0%
+Gold: 25.3, Gold ore: 1 (+0), Buff/Nerf: +0.0%
 Gold per capita: 0.01, Tax: 14%
 Population Stats:
-    Population: 5.535K (+165) (+10/t2) (+0%) (t2 cost: 50)
+    Population: 9.575K (+335) (+60/t2) (+0%) (t2 cost: 50)
     Citizen happiness: 65 (+0) (+0)
     Citizen anger: 25 (+0) (/2)
 Education Type:
-    617 Child
-    4918 Uneducated
+    1421 Child
+    8054 Uneducated
     0 Educated
-    0 Military
+    100 Military
 Uneducated Occupation:
-    3824 Farmer, Recommended: 3855
-    1094 Miner
-    0 Govt
+    6890 Farmer, Recommended: 4121
+    1164 Miner, Recommended: 1053
+    0 Govt, Recommended: 0
 Educated occupation:
-    0 Farmer
-    0 Miner
-    0 Govt
-    0 Scientist
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: 0
+    0 Govt, Recommended: 0
+    0 Scientist, Recommended: 0
 Military Occupation:
-    0 Farmer
-    0 Miner
-    0 Solders
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: N/A
+    0 Solders, Recommended: N/A
 Food:
-    326 (+315.0 Excess per year)
+    6479 (+1027.0 Excess per year)
     40% retention
     Farming Boosts:
         Research: (+5%)
         Focus: (+-20%)
         Furnace Level: (+0%)
     Drought:
-        Drought Power: 9
+        Drought Power: 11
         Drought Nerf: 0%
         Drought Duration: 0
 Ore:
-    -Teir 1 ores-
-    Coal: 0, Iron: 94, Copper: 3.82K, Tin: 2.12K, Salt: 2.06K, Sulphur: 0
-    -Teir 2 ores-
+    -Tier 1 ores-
+    Coal: 0, Iron: 1.34K, Copper: 5.07K, Tin: 3.37K, Salt: 3.31K, Sulphur: 0
+    -Tier 2 ores-
     Titanium: 0, Cobalt: 0, Tungsten: 0, Oil: 0, Magnesium: 0
-    -Teir 3 ores-
+    -Tier 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
     Has: Iron, Copper, Tin, Salt
     Mining Level: 8
     Ore Boosts:
         Research: (+0%)
         Focus: (+175%)
-        Mining Level: (x2.6600198804687487)
+        Mining Level: (x3.0590228625390607)
         Furnace Level: (x1.0)
 Research Boosts:
     Research: (+0%)
@@ -375,7 +377,7 @@ Research Boosts:
     Furnace level: (x1)
     Scientists: (x1.0)
 Government:
-    Needed influence: 0 (0*(1*4.92K+10*0+3*0))
+    Needed influence: 0 (0*(1*5.17K+10*0+3*0))
     Current educated government employees: 0
     Current uneducated government employees: 0
     Influence per educated employee: 1125.0
@@ -395,52 +397,53 @@ Military:
     War:
         -0% Farming Nerf
     Weapons:
-        None
+        Swords: 100 (Requires 1 Iron for 1 sword)
+        Shields: 100 (Requires 1 Bronze for shield)
 
 
 Amongustown:
 Country focus: Farming
-Gold: 44.7, Gold ore: 1 (+0), Buff/Nerf: +0.0%
+Gold: 41.5, Gold ore: 1 (+0), Buff/Nerf: +0.0%
 Gold per capita: 0.01, Tax: 10%
 Population Stats:
-    Population: 8.1K (+350) (+50/t2) (+0%) (t2 cost: 50)
+    Population: 8.85K (+450) (+50/t2) (+0%) (t2 cost: 50)
     Citizen happiness: 85 (+0) (+0)
     Citizen anger: 10 (+0) (/2)
 Education Type:
-    999 Child
-    7101 Uneducated
+    1319 Child
+    7531 Uneducated
     0 Educated
     0 Military
 Uneducated Occupation:
-    3121 Farmer, Recommended: 3193
-    3980 Miner
-    0 Govt
+    3569 Farmer, Recommended: 3569
+    3962 Miner, Recommended: 3962
+    0 Govt, Recommended: 0
 Educated occupation:
-    0 Farmer
-    0 Miner
-    0 Govt
-    0 Scientist
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: 0
+    0 Govt, Recommended: 0
+    0 Scientist, Recommended: 0
 Military Occupation:
-    0 Farmer
-    0 Miner
-    0 Solders
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: N/A
+    0 Solders, Recommended: N/A
 Food:
-    1132 (+458.0 Excess per year)
+    9947 (+1717.0 Excess per year)
     40% retention
     Farming Boosts:
         Research: (+0%)
         Focus: (+50%)
         Furnace Level: (+0%)
     Drought:
-        Drought Power: 4
+        Drought Power: 6
         Drought Nerf: 0%
         Drought Duration: 0
 Ore:
-    -Teir 1 ores-
-    Coal: 0, Iron: 0, Copper: 787, Tin: 0, Salt: 0, Sulphur: 0
-    -Teir 2 ores-
+    -Tier 1 ores-
+    Coal: 0, Iron: 0, Copper: 1.3K, Tin: 514, Salt: 0, Sulphur: 0
+    -Tier 2 ores-
     Titanium: 0, Cobalt: 0, Tungsten: 0, Oil: 0, Magnesium: 0
-    -Teir 3 ores-
+    -Tier 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
     Has: Copper, Tin
     Mining Level: 0
@@ -455,7 +458,7 @@ Research Boosts:
     Furnace level: (x1)
     Scientists: (x1.0)
 Government:
-    Needed influence: 0 (0*(1*7.1K+10*0+3*0))
+    Needed influence: 0 (0*(1*7.53K+10*0+3*0))
     Current educated government employees: 0
     Current uneducated government employees: 0
     Influence per educated employee: 1350.0
@@ -480,47 +483,47 @@ Military:
 
 Stanland:
 Country focus: Industry
-Gold: 50.5, Gold ore: 1 (+0), Buff/Nerf: +0.0%
+Gold: 51.9, Gold ore: 1 (+0), Buff/Nerf: +0.0%
 Gold per capita: 0.01, Tax: 10%
 Population Stats:
-    Population: 8.1K (+350) (+50/t2) (+0%) (t2 cost: 50)
+    Population: 8.85K (+450) (+50/t2) (+0%) (t2 cost: 50)
     Citizen happiness: 85 (+0) (+0)
     Citizen anger: 10 (+0) (/2)
 Education Type:
-    999 Child
-    7101 Uneducated
+    1319 Child
+    7531 Uneducated
     0 Educated
     0 Military
 Uneducated Occupation:
-    5201 Farmer, Recommended: 5322
-    1900 Miner
-    0 Govt
+    5947 Farmer, Recommended: 5947
+    1584 Miner, Recommended: 1584
+    0 Govt, Recommended: 0
 Educated occupation:
-    0 Farmer
-    0 Miner
-    0 Govt
-    0 Scientist
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: 0
+    0 Govt, Recommended: 0
+    0 Scientist, Recommended: 0
 Military Occupation:
-    0 Farmer
-    0 Miner
-    0 Solders
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: N/A
+    0 Solders, Recommended: N/A
 Food:
-    634 (+457.0 Excess per year)
+    9866 (+1716.0 Excess per year)
     40% retention
     Farming Boosts:
         Research: (+0%)
         Focus: (+-10%)
         Furnace Level: (+0%)
     Drought:
-        Drought Power: 4
+        Drought Power: 6
         Drought Nerf: 0%
         Drought Duration: 0
 Ore:
-    -Teir 1 ores-
-    Coal: 0, Iron: 0, Copper: 727, Tin: 0, Salt: 0, Sulphur: 0
-    -Teir 2 ores-
+    -Tier 1 ores-
+    Coal: 0, Iron: 0, Copper: 1.1K, Tin: 0, Salt: 0, Sulphur: 0
+    -Tier 2 ores-
     Titanium: 0, Cobalt: 0, Tungsten: 0, Oil: 0, Magnesium: 0
-    -Teir 3 ores-
+    -Tier 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
     Has: Copper
     Mining Level: 0
@@ -535,7 +538,7 @@ Research Boosts:
     Furnace level: (x1)
     Scientists: (x1.0)
 Government:
-    Needed influence: 0 (0*(1*7.1K+10*0+3*0))
+    Needed influence: 0 (0*(1*7.53K+10*0+3*0))
     Current educated government employees: 0
     Current uneducated government employees: 0
     Influence per educated employee: 1350.0
@@ -560,54 +563,54 @@ Military:
 
 MyrtleVille:
 Country focus: Population^2
-Gold: 45, Gold ore: 1 (+0), Buff/Nerf: +0.0%
-Gold per capita: 0.01, Tax: 14%
+Gold: 19.5, Gold ore: 1 (+0), Buff/Nerf: +0.0%
+Gold per capita: 0.03, Tax: 14%
 Population Stats:
-    Population: 47.7K (+2700) (+400/t2) (+0%) (t2 cost: 50)
-    Citizen happiness: 72 (+0) (+-1)
+    Population: 53.5K (+3500) (+400/t2) (+0%) (t2 cost: 50)
+    Citizen happiness: 70 (+0) (+-1)
     Citizen anger: 50 (+0) (/2)
 Education Type:
-    6930 Child
-    40770 Uneducated
+    9695 Child
+    43805 Uneducated
     0 Educated
     0 Military
 Uneducated Occupation:
-    39691 Farmer, Recommended: 37342
-    1079 Miner
-    0 Govt
+    43805 Farmer, Recommended: 41318
+    0 Miner, Recommended: 2487
+    0 Govt, Recommended: 0
 Educated occupation:
-    0 Farmer
-    0 Miner
-    0 Govt
-    0 Scientist
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: 0
+    0 Govt, Recommended: 0
+    0 Scientist, Recommended: 0
 Military Occupation:
-    0 Farmer
-    0 Miner
-    0 Solders
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: N/A
+    0 Solders, Recommended: N/A
 Food:
-    4612 (+8201.0 Excess per year)
+    36860 (+9227.0 Excess per year)
     40% retention
     Farming Boosts:
-        Research: (+10%)
+        Research: (+15%)
         Focus: (+-30%)
         Furnace Level: (+0%)
     Drought:
-        Drought Power: 3
+        Drought Power: 5
         Drought Nerf: 0%
         Drought Duration: 0
 Ore:
-    -Teir 1 ores-
-    Coal: 75, Iron: 30, Copper: 0, Tin: 135, Salt: 0, Sulphur: 0
-    -Teir 2 ores-
+    -Tier 1 ores-
+    Coal: 164, Iron: 119, Copper: 0, Tin: 224, Salt: 89, Sulphur: 0
+    -Tier 2 ores-
     Titanium: 0, Cobalt: 0, Tungsten: 0, Oil: 0, Magnesium: 0
-    -Teir 3 ores-
+    -Tier 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
     Has: Tin, Iron, Coal, Salt
     Mining Level: 4
     Ore Boosts:
         Research: (+10%)
         Focus: (+-50%)
-        Mining Level: (x1.5208749999999998)
+        Mining Level: (x1.7490062499999994)
         Furnace Level: (x1.0)
 Research Boosts:
     Research: (+0%)
@@ -615,7 +618,7 @@ Research Boosts:
     Furnace level: (x1)
     Scientists: (x1.0)
 Government:
-    Needed influence: 0 (0*(1*40.8K+10*0+3*0))
+    Needed influence: 0 (0*(1*43.8K+10*0+3*0))
     Current educated government employees: 0
     Current uneducated government employees: 0
     Influence per educated employee: 1125.0
@@ -630,7 +633,7 @@ Industry:
     -Material Crafting-
     Bronze: 0 (needs 1 copper and 1 tin for 1)
     Gunpowder: 0 (needs 1 sulphur and 1 coal for 1)     
-Research: [1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+Research: [1,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 Military:
     War:
         -0% Farming Nerf
@@ -640,54 +643,54 @@ Military:
 
 nich:
 Country focus: Basic
-Gold: 96.7, Gold ore: 1 (+0), Buff/Nerf: +0.0%
+Gold: 86.5, Gold ore: 1 (+0), Buff/Nerf: +0.0%
 Gold per capita: 0.05, Tax: 10%
 Population Stats:
-    Population: 10.9K (+400) (+50/t2) (+0%) (t2 cost: 50)
-    Citizen happiness: 103 (+0) (+1)
+    Population: 11.75K (+500) (+50/t2) (+0%) (t2 cost: 50)
+    Citizen happiness: 105 (+0) (+1)
     Citizen anger: 0 (+0) (/2)
 Education Type:
-    1262 Child
-    9638 Uneducated
+    1577 Child
+    10173 Uneducated
     0 Educated
     0 Military
 Uneducated Occupation:
-    6002 Farmer, Recommended: 6097
-    3636 Miner
-    0 Govt
+    6681 Farmer, Recommended: 6681
+    3492 Miner, Recommended: 3492
+    0 Govt, Recommended: 0
 Educated occupation:
-    0 Farmer
-    0 Miner
-    0 Govt
-    0 Scientist
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: 0
+    0 Govt, Recommended: 0
+    0 Scientist, Recommended: 0
 Military Occupation:
-    0 Farmer
-    0 Miner
-    0 Solders
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: N/A
+    0 Solders, Recommended: N/A
 Food:
-    1749 (+616.0 Excess per year)
+    11228 (+227.0 Excess per year)
     40% retention
     Farming Boosts:
         Research: (+5%)
         Focus: (+0%)
         Furnace Level: (+0%)
     Drought:
-        Drought Power: 3
+        Drought Power: 5
         Drought Nerf: 0%
         Drought Duration: 0
 Ore:
-    -Teir 1 ores-
-    Coal: 0, Iron: 200, Copper: 0, Tin: 641, Salt: 0, Sulphur: 0
-    -Teir 2 ores-
+    -Tier 1 ores-
+    Coal: 1.57K, Iron: 1.13K, Copper: 1.57K, Tin: 2.02K, Salt: 1.57K, Sulphur: 0
+    -Tier 2 ores-
     Titanium: 0, Cobalt: 0, Tungsten: 0, Oil: 0, Magnesium: 0
-    -Teir 3 ores-
+    -Tier 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
     Has: Iron, Tin, Copper, Coal, Salt
-    Mining Level: 6
+    Mining Level: 7
     Ore Boosts:
         Research: (+0%)
         Focus: (+0%)
-        Mining Level: (x1.7490062499999994)
+        Mining Level: (x2.6600198804687487)
         Furnace Level: (x1.0)
 Research Boosts:
     Research: (+0%)
@@ -695,7 +698,7 @@ Research Boosts:
     Furnace level: (x1)
     Scientists: (x1.0)
 Government:
-    Needed influence: 0 (0*(1*9.64K+10*0+3*0))
+    Needed influence: 0 (0*(1*10.2K+10*0+3*0))
     Current educated government employees: 0
     Current uneducated government employees: 0
     Influence per educated employee: 1500.0
@@ -720,54 +723,54 @@ Military:
 
 Yugoslavia:
 Country focus: Government^2
-Gold: 22.6, Gold ore: 1 (+0), Buff/Nerf: +0.0%
-Gold per capita: 0.01, Tax: 14%
+Gold: 7.3, Gold ore: 1 (+0), Buff/Nerf: +0.0%
+Gold per capita: 0.02, Tax: 14%
 Population Stats:
-    Population: 4.225K (+150) (+25/t2) (+0%) (t2 cost: 50)
+    Population: 4.2K (+200) (+25/t2) (+0%) (t2 cost: 50)
     Citizen happiness: 85 (+0) (+0)
     Citizen anger: 0 (+0) (/2)
 Education Type:
-    461 Child
-    3764 Uneducated
+    589 Child
+    3611 Uneducated
     0 Educated
     0 Military
 Uneducated Occupation:
-    2902 Farmer, Recommended: 2902
-    0 Miner
-    0 Govt
+    2825 Farmer, Recommended: 2825
+    0 Miner, Recommended: 786
+    0 Govt, Recommended: 0
 Educated occupation:
-    0 Farmer
-    0 Miner
-    0 Govt
-    0 Scientist
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: 0
+    0 Govt, Recommended: 0
+    0 Scientist, Recommended: 0
 Military Occupation:
-    0 Farmer
-    0 Miner
-    0 Solders
+    0 Farmer, Recommended: 0
+    0 Miner, Recommended: N/A
+    0 Solders, Recommended: N/A
 Food:
-    784 (+240.0 Excess per year)
+    5359 (+1089.0 Excess per year)
     40% retention
     Farming Boosts:
-        Research: (+0%)
+        Research: (+5%)
         Focus: (+-15%)
         Furnace Level: (+0%)
     Drought:
-        Drought Power: 2
+        Drought Power: 4
         Drought Nerf: 0%
         Drought Duration: 0
 Ore:
-    -Teir 1 ores-
-    Coal: 0, Iron: 17, Copper: 47, Tin: 38, Salt: 0, Sulphur: 0
-    -Teir 2 ores-
+    -Tier 1 ores-
+    Coal: 0, Iron: 41, Copper: 111, Tin: 90, Salt: 0, Sulphur: 0
+    -Tier 2 ores-
     Titanium: 0, Cobalt: 0, Tungsten: 0, Oil: 0, Magnesium: 0
-    -Teir 3 ores-
+    -Tier 3 ores-
     Uranium: 0, Silicon: 0, Beryllium: 0, Hydrogen: 0, Plutonium: 0, Radium: 0, Mythril: 0
     Has: Iron, Tin, Copper
-    Mining Level: 2
+    Mining Level: 3
     Ore Boosts:
-        Research: (+0%)
+        Research: (+10%)
         Focus: (+-35%)
-        Mining Level: (x1.0)
+        Mining Level: (x1.5208749999999998)
         Furnace Level: (x1.0)
 Research Boosts:
     Research: (+0%)
@@ -775,7 +778,7 @@ Research Boosts:
     Furnace level: (x1)
     Scientists: (x1.0)
 Government:
-    Needed influence: 0 (0*(1*3.76K+10*0+3*0))
+    Needed influence: 0 (0*(1*3.61K+10*0+3*0))
     Current educated government employees: 0
     Current uneducated government employees: 0
     Influence per educated employee: 22500.0
@@ -790,7 +793,7 @@ Industry:
     -Material Crafting-
     Bronze: 0 (needs 1 copper and 1 tin for 1)
     Gunpowder: 0 (needs 1 sulphur and 1 coal for 1)     
-Research: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+Research: [1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 Military:
     War:
         -0% Farming Nerf
