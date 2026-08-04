@@ -424,10 +424,10 @@ for nation in range(len(info2)):
                 foodDebt -= military_to_starve
                 citHap -= 5
         else:
-            food = (food - neededFood)*foodRetention/100  + foodGain
+            food = (food - neededFood + foodGain) * foodRetention / 100
     else:
         foodEconomy = neededFood
-        food = (food - neededFood)*foodRetention/100  + foodGain
+        food = (food - neededFood + foodGain) * foodRetention / 100
     foodExcess = foodGain - neededFood
 
     # drought stuff
@@ -570,8 +570,7 @@ for nation in range(len(info2)):
     MiningLevelOreBoost = 1.15**miningLevel
     furnaceLeveOrelBoost = 2.5**furnaceLevel
 
-    
-    goldBuff = ((govtNerf * round(1.1**furnaceLevel + 0.1 * furnaceLevel, 2)) - 1) / 100
+    goldBuff = ((govtNerf * round(1.1**furnaceLevel + 0.1 * furnaceLevel, 2)) - 1) * 100
 
     cWLF = 0
     cWKF = 1
