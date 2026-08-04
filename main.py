@@ -301,7 +301,7 @@ for nation in range(len(info2)):
         elif "farming nerf" in line_lower and section == "militaryStuff":
             farmingWarNerf = ISN(line_clean.split("%")[0].strip("-"))
         elif section == "militaryCopy" and not ("weapons:" in line_lower):
-            militaryCopy += "\n" + line_clean
+            militaryCopy += "\n" + line
 
     # test zone end
 
@@ -452,8 +452,8 @@ for nation in range(len(info2)):
     if gold <= 0:
         citHap -= 4
     goldOre += goldOreGain
-    gold -= gpc * 0.1 * (uneducatedFarmer + educatedFarmer + militaryFarmer)
-    gold -= gpc * 0.2 * (uneducatedMiner + educatedMiner + militaryMiner)
+    gold -= gpc * 0.1 * (uneducatedFarmer + educatedFarmer + 1.2 * militaryFarmer)
+    gold -= gpc * 0.2 * (uneducatedMiner + educatedMiner + 1.2 * militaryMiner)
     gold -= gpc * 0.5 * (militarySoldiers)
     gold -= gpc * 1.5 * (uneducatedGovt + educatedGovt)
     gold -= gpc * 2.5 * educatedScientist
@@ -570,7 +570,7 @@ for nation in range(len(info2)):
     MiningLevelOreBoost = 1.15**miningLevel
     furnaceLeveOrelBoost = 2.5**furnaceLevel
 
-    
+
     goldBuff = ((govtNerf * round(1.1**furnaceLevel + 0.1 * furnaceLevel, 2)) - 1) / 100
 
     cWLF = 0
@@ -600,9 +600,9 @@ for nation in range(len(info2)):
     finalPopulation = cWF(finalChildCount + finalUneducatedCount + finalEducatedCount + finalMilitaryCount,cWKF)
     finalFood = cWF(food,cWKF)
     finalNeededInfluence = furnaceLevel*(finalUneducatedCount+10*finalEducatedCount+3*finalMilitaryCount)
-    recomendedUneducatedFarmers = min(math.ceil(((2*finalChildCount)+finalPopulation)/(foodperperson*0.95)),uneducatedCount)
-    recomendedEducatedFarmers = min(math.ceil((((2*finalChildCount)+finalPopulation)/(foodperperson*0.95))-recomendedUneducatedFarmers),educatedCount)
-    recomendedMilitaryFarmers = min(math.ceil((((2*finalChildCount)+finalPopulation)/(foodperperson*0.95))-recomendedUneducatedFarmers-recomendedEducatedFarmers),militaryCount)
+    recomendedUneducatedFarmers = min(math.ceil(((finalChildCount)+finalPopulation)/(foodperperson*0.95)),uneducatedCount)
+    recomendedEducatedFarmers = min(math.ceil((((finalChildCount)+finalPopulation)/(foodperperson*0.95))-recomendedUneducatedFarmers),educatedCount)
+    recomendedMilitaryFarmers = min(math.ceil((((finalChildCount)+finalPopulation)/(foodperperson*0.95))-recomendedUneducatedFarmers-recomendedEducatedFarmers),militaryCount)
     recomendedEducatedGovt = min(math.ceil((finalNeededInfluence)/influencePerEducatedEmployee),educatedCount-recomendedEducatedFarmers)
     recomendedUneducatedGovt = min(math.ceil((finalNeededInfluence-(finalEducatedGovt*influencePerEducatedEmployee))/influencePerUneducatedEmployee),uneducatedCount-recomendedUneducatedFarmers)
     recomendedUneducatedMiner = math.ceil(uneducatedCount-recomendedUneducatedFarmers-recomendedUneducatedGovt)
