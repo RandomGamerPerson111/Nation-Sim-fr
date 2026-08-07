@@ -234,9 +234,7 @@ for nation in range(len(info2)):
             elif boost_context == "govt":
                 focusGovtBoost = ISN(line_clean.split("(+")[1].split("%")[0])
         elif "furnace level:" in line_lower:
-            if boost_context == "farming":
-                furnaceFarmingBoost = ISN(line_clean.split("(+")[1].split("%")[0])
-            elif boost_context == "ore":
+            if boost_context == "ore":
                 furnaceLeveOrelBoost = ISN(line_clean.split("x")[1].split(")")[0])
             elif boost_context == "research":
                 furnaceResearchBoost = ISN(line_clean.split("x")[1].split(")")[0])
@@ -593,7 +591,7 @@ Food:
     Farming Boosts:
         Research: (+{researchFarmingBoost}%)
         Focus: (+{focusFarmingBoost}%)
-        Furnace Level: (+{furnaceFarmingBoost}%)
+        Furnace Level: (+{furnaceLevel/5*100}%)
     Drought:
         Drought Power: {droughtPower}
         Drought Nerf: {droughtNerf}%
@@ -673,7 +671,7 @@ Food:
     Farming Boosts:
         Research: (+{researchFarmingBoost}%)
         Focus: (+{focusFarmingBoost}%)
-        Furnace Level: (+{furnaceFarmingBoost}%)
+        Furnace Level: (+{furnaceLevel/5*100}%)
     Drought:
         Drought Power: {droughtPower}
         Drought Nerf: {droughtNerf}%
