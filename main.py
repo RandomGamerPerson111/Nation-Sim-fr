@@ -13,7 +13,6 @@ from oreFunctions import (
 )
 from constructor import generateAINation
 
-
 all_nations_output = []
 
 file = open("Nations.txt", "r", encoding="utf-8")
@@ -27,7 +26,6 @@ for nationBlock in info2:
         continue
 
     section = "null"
-
 
     info3 = nationBlock.split("\n")
     name = info3[0].split(":")[0]
@@ -79,7 +77,6 @@ for nation in range(len(info2)):
     tractors = 0
     militaryCopy = ""
     isAI = name.__contains__("(AI)")
-        
 
     civilWar = False
 
@@ -344,9 +341,7 @@ for nation in range(len(info2)):
         + (10 * research[56])
     )
     researchResearchBoost = (
-        (15 * research[14])
-        + (50 * research[31])
-        + (50 * research[56])
+        (15 * research[14]) + (50 * research[31]) + (50 * research[56])
     )
 
     # citHap and citAng
@@ -405,7 +400,7 @@ for nation in range(len(info2)):
     if neededFood > foodGain:
         foodEconomy = foodGain
         if foodGain + food < neededFood:
-            print(name +" Couldn't feed their people")
+            print(name + " Couldn't feed their people")
             foodDebt = neededFood - (food + foodGain)
             food = 0
             children_to_starve = min(math.ceil(foodDebt / 2), childCount)
@@ -432,10 +427,14 @@ for nation in range(len(info2)):
                 foodDebt -= military_to_starve
                 citHap -= 5
         else:
-            food = (min((food - neededFood) * foodRetention / 100,(food - neededFood)))+ foodGain
+            food = (
+                min((food - neededFood) * foodRetention / 100, (food - neededFood))
+            ) + foodGain
     else:
         foodEconomy = neededFood
-        food = (min((food - neededFood) * foodRetention / 100,(food - neededFood)))+ foodGain
+        food = (
+            min((food - neededFood) * foodRetention / 100, (food - neededFood))
+        ) + foodGain
     foodExcess = foodGain - neededFood
 
     # drought stuff
@@ -456,8 +455,14 @@ for nation in range(len(info2)):
     # economy stuff
     oldGold = gold
     if gold <= 0:
-            citHap -= 3
-    gold += govtNerf * gpc * (tax / 100) * foodEconomy * round(1.1**furnaceLevel + 0.1*furnaceLevel,2)
+        citHap -= 3
+    gold += (
+        govtNerf
+        * gpc
+        * (tax / 100)
+        * foodEconomy
+        * round(1.1**furnaceLevel + 0.1 * furnaceLevel, 2)
+    )
     if gold <= 0:
         citHap -= 4
     goldOre += goldOreGain
@@ -470,13 +475,19 @@ for nation in range(len(info2)):
     if gold <= 0:
         citHap -= 3
     else:
-        goldGain = gold-oldGold
-        gpcGainExp = (math.floor(goldGain/50)/100)/gpc
+        goldGain = gold - oldGold
+        gpcGainExp = (math.floor(goldGain / 50) / 100) / gpc
         if 0.2 > gpcGainExp > 0.1:
-            gold = (oldGold)+((gpc*500)+((goldGain-(gpc*500))/4))
+            gold = (oldGold) + ((gpc * 500) + ((goldGain - (gpc * 500)) / 4))
             gold = round(gold, 2)
         elif gpcGainExp >= 0.2:
-            gold = (oldGold)+((gpc*(1000-(1000*2**-(gpcGainExp*10-1))))+((goldGain-(gpc*(1000-(1000*2**-(gpcGainExp*10-1)))))/(2**(gpcGainExp*10))))
+            gold = (oldGold) + (
+                (gpc * (1000 - (1000 * 2 ** -(gpcGainExp * 10 - 1))))
+                + (
+                    (goldGain - (gpc * (1000 - (1000 * 2 ** -(gpcGainExp * 10 - 1)))))
+                    / (2 ** (gpcGainExp * 10))
+                )
+            )
             gold = round(gold, 2)
     # population
     temp = childCount
@@ -506,17 +517,16 @@ for nation in range(len(info2)):
     militaryMiner = temp[1]
     militarySoldiers = temp[2]
 
-
     # Mining stuff
     MiningLevelOreBoost = 1.15**miningLevel
     furnaceLeveOrelBoost = 2**furnaceLevel
     globalFurnaceBoost = 1.3 ** (
         (max(globalFurnaceLevel, furnaceLevel + 1)) - furnaceLevel - 1
     )
-    minerProportion = (uneducatedMiner + educatedMiner + militaryMiner)/population
+    minerProportion = (uneducatedMiner + educatedMiner + militaryMiner) / population
     oreGain = (
         govtNerf
-        * (minerProportion*(population**0.95) / 5)
+        * (minerProportion * (population**0.95) / 5)
         * MiningLevelOreBoost
         * furnaceLeveOrelBoost
         * globalFurnaceBoost
@@ -574,55 +584,140 @@ for nation in range(len(info2)):
             iron = MLstats[0]
             tin = MLstats[1]
             miningLevel = MLstats[2]
-    temp = handleFL(furnaceLevel, iron, bronzeCrafting, coal, salt, steelCrafting, cobalt, tungsten, oil)
-    furnaceLevel = temp[0]
-    furnaceReq = returnFLRequirements(furnaceLevel)
-    iron = temp[1]
-    bronzeCrafting = temp[2]
-    coal = temp[3]
-    salt = temp[4]
-    steel = temp[5]
+    success = True
+    craftableSteel = min(floor(iron / 10), coal)
+    craftableBronze = min(tin, copper)
+    while success:
+        success, temp, craft = handleFL(
+            furnaceLevel,
+            iron,
+            bronzeCrafting,
+            coal,
+            salt,
+            steelCrafting,
+            cobalt,
+            tungsten,
+            oil,
+            craftableBronze,
+            craftableSteel,
+        )
+        furnaceLevel = temp[0]
+        furnaceReq = returnFLRequirements(furnaceLevel)
+        iron = temp[1]
+        bronzeCrafting = temp[2]
+        coal = temp[3]
+        salt = temp[4]
+        steel = temp[5]
+        cobalt = temp[6]
+        tungsten = temp[7]
+        oil = temp[8]
+        copper -= craft[0]
+        tin -= craft[0]
+        iron -= craft[1] * 10
+        coal -= craft[1]
     MiningLevelOreBoost = 1.15**miningLevel
     furnaceLeveOrelBoost = 2.5**furnaceLevel
     goldBuff = ((govtNerf * round(1.1**furnaceLevel + 0.1 * furnaceLevel, 2)) - 1) * 100
 
     cWLF = 0
     cWKF = 1
-    if citHap <= 50-max(citAng-50,0):
+    if citHap <= 50 - max(citAng - 50, 0):
         civilWar = True
-        cWLF = min(2 * (50 - citHap-max(citAng-50,0)), 90) / 100
+        cWLF = min(2 * (50 - citHap - max(citAng - 50, 0)), 90) / 100
         cWKF = 1 - cWLF
         citHap = round(66 + citHap * 34)
 
-    #precompute civil war stats so as to make the following code not instantly kill anyone who reads it
-    finalGold = round(gold*cWKF,2)
-    finalUneducatedFarmer = cWF(uneducatedFarmer,cWKF)
-    finalUneducatedMiner = cWF(uneducatedMiner,cWKF)
-    finalUneducatedGovt = cWF(uneducatedGovt,cWKF)
-    finalUneducatedUnemployed = cWF((uneducatedCount-uneducatedFarmer-uneducatedMiner-uneducatedGovt),cWKF)
-    finalEducatedFarmer = cWF(educatedFarmer,cWKF)
-    finalEducatedMiner = cWF(educatedMiner,cWKF)
-    finalEducatedGovt = cWF(educatedGovt,cWKF)
-    finalEducatedScientist = cWF(educatedScientist,cWKF)
-    finalEducatedUnemployed = cWF((educatedCount-educatedFarmer-educatedMiner-educatedGovt-educatedScientist),cWKF)
-    finalMilitaryFarmer = cWF(militaryFarmer,cWKF)
-    finalMilitaryMiner = cWF(militaryMiner,cWKF)
-    finalMilitarySoldiers = cWF(militarySoldiers,cWKF)
-    finalMilitaryUnemployed = cWF((militaryCount-militaryFarmer-militaryMiner-militarySoldiers),cWKF)
-    finalChildCount = cWF(childCount,cWKF)
-    finalUneducatedCount = finalUneducatedFarmer + finalUneducatedMiner + finalUneducatedGovt + finalUneducatedUnemployed
-    finalEducatedCount = finalEducatedFarmer + finalEducatedMiner + finalEducatedGovt + finalEducatedScientist + finalEducatedUnemployed
-    finalMilitaryCount = finalMilitaryFarmer + finalMilitaryMiner + finalMilitarySoldiers + finalMilitaryUnemployed
-    finalPopulation = finalChildCount + finalUneducatedCount + finalEducatedCount + finalMilitaryCount
-    finalFood = cWF(food,cWKF)
-    finalNeededInfluence = furnaceLevel*(finalUneducatedCount+10*finalEducatedCount+3*finalMilitaryCount)
-    recomendedUneducatedFarmers = min(math.ceil(((finalChildCount)+finalPopulation)/(foodperperson*0.95)),uneducatedCount)
-    recomendedEducatedFarmers = min(math.ceil((((finalChildCount)+finalPopulation)/(foodperperson*0.95))-recomendedUneducatedFarmers),educatedCount)
-    recomendedMilitaryFarmers = min(math.ceil((((finalChildCount)+finalPopulation)/(foodperperson*0.95))-recomendedUneducatedFarmers-recomendedEducatedFarmers),militaryCount)
-    recomendedEducatedGovt = min(math.ceil((finalNeededInfluence)/influencePerEducatedEmployee),educatedCount-recomendedEducatedFarmers)
-    recomendedUneducatedGovt = min(math.ceil((finalNeededInfluence-(finalEducatedGovt*influencePerEducatedEmployee))/influencePerUneducatedEmployee),uneducatedCount-recomendedUneducatedFarmers)
-    recomendedUneducatedMiner = math.ceil(uneducatedCount-recomendedUneducatedFarmers-recomendedUneducatedGovt)
-    recomendedScientists = math.ceil(educatedCount-recomendedEducatedFarmers-recomendedEducatedGovt)
+    # precompute civil war stats so as to make the following code not instantly kill anyone who reads it
+    finalGold = round(gold * cWKF, 2)
+    finalUneducatedFarmer = cWF(uneducatedFarmer, cWKF)
+    finalUneducatedMiner = cWF(uneducatedMiner, cWKF)
+    finalUneducatedGovt = cWF(uneducatedGovt, cWKF)
+    finalUneducatedUnemployed = cWF(
+        (uneducatedCount - uneducatedFarmer - uneducatedMiner - uneducatedGovt), cWKF
+    )
+    finalEducatedFarmer = cWF(educatedFarmer, cWKF)
+    finalEducatedMiner = cWF(educatedMiner, cWKF)
+    finalEducatedGovt = cWF(educatedGovt, cWKF)
+    finalEducatedScientist = cWF(educatedScientist, cWKF)
+    finalEducatedUnemployed = cWF(
+        (
+            educatedCount
+            - educatedFarmer
+            - educatedMiner
+            - educatedGovt
+            - educatedScientist
+        ),
+        cWKF,
+    )
+    finalMilitaryFarmer = cWF(militaryFarmer, cWKF)
+    finalMilitaryMiner = cWF(militaryMiner, cWKF)
+    finalMilitarySoldiers = cWF(militarySoldiers, cWKF)
+    finalMilitaryUnemployed = cWF(
+        (militaryCount - militaryFarmer - militaryMiner - militarySoldiers), cWKF
+    )
+    finalChildCount = cWF(childCount, cWKF)
+    finalUneducatedCount = (
+        finalUneducatedFarmer
+        + finalUneducatedMiner
+        + finalUneducatedGovt
+        + finalUneducatedUnemployed
+    )
+    finalEducatedCount = (
+        finalEducatedFarmer
+        + finalEducatedMiner
+        + finalEducatedGovt
+        + finalEducatedScientist
+        + finalEducatedUnemployed
+    )
+    finalMilitaryCount = (
+        finalMilitaryFarmer
+        + finalMilitaryMiner
+        + finalMilitarySoldiers
+        + finalMilitaryUnemployed
+    )
+    finalPopulation = (
+        finalChildCount + finalUneducatedCount + finalEducatedCount + finalMilitaryCount
+    )
+    finalFood = cWF(food, cWKF)
+    finalNeededInfluence = furnaceLevel * (
+        finalUneducatedCount + 10 * finalEducatedCount + 3 * finalMilitaryCount
+    )
+    recomendedUneducatedFarmers = min(
+        math.ceil(((finalChildCount) + finalPopulation) / (foodperperson * 0.95)),
+        uneducatedCount,
+    )
+    recomendedEducatedFarmers = min(
+        math.ceil(
+            (((finalChildCount) + finalPopulation) / (foodperperson * 0.95))
+            - recomendedUneducatedFarmers
+        ),
+        educatedCount,
+    )
+    recomendedMilitaryFarmers = min(
+        math.ceil(
+            (((finalChildCount) + finalPopulation) / (foodperperson * 0.95))
+            - recomendedUneducatedFarmers
+            - recomendedEducatedFarmers
+        ),
+        militaryCount,
+    )
+    recomendedEducatedGovt = min(
+        math.ceil((finalNeededInfluence) / influencePerEducatedEmployee),
+        educatedCount - recomendedEducatedFarmers,
+    )
+    recomendedUneducatedGovt = min(
+        math.ceil(
+            (finalNeededInfluence - (finalEducatedGovt * influencePerEducatedEmployee))
+            / influencePerUneducatedEmployee
+        ),
+        uneducatedCount - recomendedUneducatedFarmers,
+    )
+    recomendedUneducatedMiner = math.ceil(
+        uneducatedCount - recomendedUneducatedFarmers - recomendedUneducatedGovt
+    )
+    recomendedScientists = math.ceil(
+        educatedCount - recomendedEducatedFarmers - recomendedEducatedGovt
+    )
     if isAI:
         finalUneducatedFarmer = recomendedUneducatedFarmers
         finalUneducatedMiner = recomendedUneducatedMiner
@@ -632,15 +727,24 @@ for nation in range(len(info2)):
         finalEducatedGovt = recomendedEducatedGovt
         finalEducatedScientist = recomendedScientists
         finalMilitaryFarmer = recomendedMilitaryFarmers
-        if finalMilitaryCount-finalMilitaryFarmer > 0:
+        if finalMilitaryCount - finalMilitaryFarmer > 0:
             if finalMilitaryMiner > 0:
-                finalMilitaryMiner = finalMilitaryCount-finalMilitaryFarmer
+                finalMilitaryMiner = finalMilitaryCount - finalMilitaryFarmer
             else:
-                finalMilitarySoldiers = finalMilitaryCount-finalMilitaryFarmer
+                finalMilitarySoldiers = finalMilitaryCount - finalMilitaryFarmer
     furnaceResearchBoost = 2.5**furnaceLevel
     researcherResearchMult = 1 + math.sqrt(finalEducatedScientist)
 
+<<<<<<< HEAD
     researchPoints += round(researcherResearchMult*(1+(focusResearchBoost/100))*furnaceResearchBoost*(1+(researchResearchBoost/100)))
+=======
+    researchPoints += round(
+        researcherResearchMult
+        * (1 + (focusResearchBoost / 100))
+        * furnaceResearchBoost
+        * (1 + (researchResearchBoost / 100))
+    )
+>>>>>>> flfix
 
     final_output = f"""{name}:
 Country focus: {focus}
@@ -806,9 +910,8 @@ Military:
         {militaryCopy.strip()}"""
     all_nations_output.append(final_output)
 
-if random.random() < -1/(1+math.sqrt(AInationCount/4)):
+if random.random() < -1 / (1 + math.sqrt(AInationCount / 4)):
     all_nations_output.append(generateAINation(nameList))
-
 
 
 combined_text = "\n\n\n".join(all_nations_output)
